@@ -3,7 +3,7 @@ const { commonJsonData } = require('../config')
 
 const router = express.Router()
 
-router.get('/userInfo', (req, res) => {
+router.get('/test', (req, res) => {
     console.log('/userInfo')
 	const userInfo = {
 		name: 'li',

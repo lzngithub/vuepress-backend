@@ -1,8 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const expressJwt = require('express-jwt')
-const loginRouter = require('./routes/login')
-const userRouter = require('./routes/user')
+const authRouter = require('./routes/auth')
 const { getToken } = require('./utils')
 
 const app = express()
@@ -41,7 +40,7 @@ app.use(expressJwt({
    // 算法
     algorithms: ['HS256']
 }).unless({
-    path: ['/login', '/register','/']  //不需要验证的接口名称
+    path: ['/auth', '/register','/']  //不需要验证的接口名称
 }))
 
 //token失效返回信息
@@ -52,8 +51,7 @@ app.use(function (err, req, res, next) {
     }
 })
 
-app.use('/login', loginRouter)
-app.use('/user', userRouter)
+app.use('/auth', authRouter)
 
 app.listen('5000', () => {
 	console.log('服务已启动，端口：5000')
