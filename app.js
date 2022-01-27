@@ -40,7 +40,7 @@ app.use(expressJwt({
    // 算法
     algorithms: ['HS256']
 }).unless({
-    path: ['/auth', '/register','/']  //不需要验证的接口名称
+    path: ['/auth/login', '/auth/getUserInfo', '/register','/']  //不需要验证的接口名称
 }))
 
 //token失效返回信息
